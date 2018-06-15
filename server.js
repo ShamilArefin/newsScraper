@@ -1,32 +1,19 @@
-// Using the tools and techniques you learned so far,
-// you will scrape a website of your choice, then place the data
-// in a MongoDB database. Be sure to make the database and collection
-// before running this exercise.
 
-// Consult the assignment files from earlier in class
-// if you need a refresher on Cheerio.
-
-// Dependencies
 var express = require("express");
 var mongojs = require("mongojs");
-// Require request and cheerio. This makes the scraping possible
 var request = require("request");
 var cheerio = require("cheerio");
 
-// Initialize Express
 var app = express();
 
-// Database configuration
 var databaseUrl = "scraper";
 var collections = ["scrapedData"];
 
-// Hook mongojs configuration to the db variable
 var db = mongojs(databaseUrl, collections);
 db.on("error", function (error) {
   console.log("Database Error:", error);
 });
 
-// Main route (simple Hello World Message)
 app.get("/", function (req, res) {
   res.send("Hello world");
 });
@@ -87,6 +74,9 @@ app.get("/scrape", function (req, res) {
   });
   res.send("Done");
 });
+app.post("/", function (req, res){
+    return (res.json)
+})
 /* -/-/-/-/-/-/-/-/-/-/-/-/- */
 
 // Listen on port 3000
